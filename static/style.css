@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+#container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 90%;  
+    max-width: 600px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.mainbox {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"] { 
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#resultsPage {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 90%;   
+    max-width: 900px;
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-top: 30px;
+    position: relative;
+    box-sizing: border-box; 
+    overflow-x: hidden; 
+}
+
+#results {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
+.product {
+    margin-bottom: 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+
+.product p {
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 16px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}

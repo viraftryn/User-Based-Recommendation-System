@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        async function getRecommendations() {
+            const userId = document.getElementById("user_id").value;
+            const numRecommendations = document.getElementById("num_recommendations").value;
+
+            const response = await fetch("/recommendations/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: userId, 
+                    num_recommendations: parseInt(numRecommendations)
+                })
+            });
+
+            const data = await response.json();
+
+            document.getElementById("inputPage").style.display = "none";
+            document.getElementById("resultsPage").style.display = "block";
+
+            if (response.ok) {
+                let results = document.getElementById("results");
+                results.innerHTML = `<h2>Recommended Products</h2>`;
+
+                data.recommendations.forEach(recommendation => {
+                    results.innerHTML += `
+                        <div class="product">
+                            <p><strong>Product ID:</strong> ${recommendation.product_id} <br>
+                            <strong>Name:</strong> ${recommendation.product_name} </p><br>
+                        </div>`;
+                });
+
+            } else {
+                alert("Error: " + data.detail);
+            }
+        }
+
+        function goBack() {
+            document.getElementById("resultsPage").style.display = "none";
+            document.getElementById("inputPage").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="inputPage" class="mainbox">
+            <h1>Product Recommendations</h1>
+            <form onsubmit="event.preventDefault(); getRecommendations();">
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" required><br><br>  <!-- Changed to text input -->
+        
+                <label for="num_recommendations">Number of Recommendations:</label>
+                <input type="number" id="num_recommendations" name="num_recommendations" value="3" min="1" required><br><br>  <!-- Added min attribute -->
+        
+                <button type="submit">Get Recommendations!</button>
+            </form>
+        </div>
+
+        <!-- Results Page -->
+        <div id="resultsPage" style="display: none;">
+            <div id="results"></div>
+            <button id="backButton" onclick="goBack()">Back</button>
+        </div>
+    </div>
+</body>
+</html>
